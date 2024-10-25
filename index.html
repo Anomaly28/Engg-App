@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>ENGG APP</title>
+<style>
+* { font-size: 40px; }
+.container {
+  width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: lightblue;
+}
+input[type=radio] { width: 2%; height: 0.6em; }
+</style>
+</head>
+<body>
+<center>
+<h1>ENGG APP</h1>
+<div class="container">
+  <form onsubmit="show(event)">
+      <input type="text" id="name" placeholder="Enter your name" />
+      <br/><br/>
+      <label for="year">Select Engg Year</label>
+      <select id="year" name="year">
+          <option value="FE">FE</option>
+          <option value="SE">SE</option>
+          <option value="TE">TE</option>
+          <option value="BE">BE</option>
+      </select>
+      <br/><br/>
+      <input type="submit" />
+  </form>
+  <h2 id="msg"></h2>
+</div>
+<script>
+function show(event) {
+    event.preventDefault(); // Prevent form submission
+    
+    let name = document.getElementById("name");
+    let year = document.getElementById("year");
+    let msg = document.getElementById("msg");
+
+    // Name validation
+    if (name.value === "") {
+        alert("Please enter your name");
+        msg.innerHTML = "";
+        name.focus();
+        return;
+    }
+    if (!name.value.match("^[A-Za-z ]{2,50}$")) {
+        alert("Name should contain only alphabets and spaces");
+        msg.innerHTML = "";
+        name.focus();
+        return;
+    }
+
+    // Display result
+    let ans = "Name = " + name.value + "   Year = " + year.value;
+    msg.innerHTML = ans;
+}
+</script>
+</center>
+</body>
+</html>
